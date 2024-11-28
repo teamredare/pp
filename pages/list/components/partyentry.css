@@ -1,0 +1,92 @@
+.entry {
+    position: relative;
+    display:flex;
+    flex-flow:column;
+
+    height:400px;
+    width:300px;
+
+    box-shadow: black 10px 10px 20px 1px;
+}
+
+@media screen and (max-width:450px) {
+    /* CSS for screens that are 320 pixels or less will be put in this section */
+    .entry{
+        height:200px;
+        width:90vw;
+    }
+}
+
+
+
+.entry * {
+    display:flex;
+    font-family: Poppins, arial;
+}
+
+.top{
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    padding:5px;
+}
+.info {
+    flex-flow:column;
+    font-size:20px;
+} 
+.nameandposter{
+    gap:5px;
+    flex-flow:row wrap;
+    align-items: flex-end;
+}
+.info > * {
+    margin-right:5px;
+}
+.partyname {
+    font-size:25px;
+    font-weight: bold;
+}
+.deets{
+    flex-flow: row wrap;
+    gap:5px;
+}
+
+
+.bottom{
+    flex-flow:column;
+    position:absolute;
+    bottom:0;
+    left:0;
+    right:0;
+}
+.buttonbar{
+    flex-flow:row;
+    align-self: flex-end;
+    gap:4px;
+    padding:5px;
+}
+.button{
+    padding:5px;
+    border: solid rgba(0, 0, 0, 0.322) 2px;
+    border-radius:35px;
+    width:35px;
+    height:35px;
+
+    align-items: center;
+    justify-content: center;
+    transition:0.6s;
+    transition-property: filter, background;
+
+    cursor:pointer;
+}
+.button:hover{
+    background:rgb(255, 255, 255);
+    filter:invert()
+}
+.button img {
+    /* width: */
+}
+.dislike img {
+    rotate:180deg;
+}

@@ -1,0 +1,66 @@
+.form * {
+    display: flex;
+}
+
+.form {
+    transition: 0.4s;
+
+    background: white !important;
+    padding: 10px;
+
+    width: 90vw;
+    /* height:80vh; */
+    align-items: center;
+    justify-content: center;
+
+    display: flex;
+    flex-flow: column;
+    gap: 5px;
+
+    font-size: 30px;
+}
+
+.formbody {
+    flex-flow: column;
+    gap: 5px;
+    font-size: 20px;
+}
+.formbody * {
+   font-size: 20px;
+}
+
+.question {
+    flex-flow: row;
+    gap: 10px;
+    font-size: 20px;
+}
+
+.label {}
+
+.answer * {
+    font-size: 20px;
+}
+.note{
+    font-size:14px;
+}
+#uploadposterbutton {
+    width: fit-content;
+}
+
+.posterandimage{
+    flex-flow:row;
+    align-items: flex-start;
+    gap:5px;
+}
+#posterpreview {
+    height:100px;
+}
+#posterpreview:empty {
+    display: none;
+}
+
+
+.endbuttons {
+    align-self: center;
+    flex-flow: row wrap;
+}

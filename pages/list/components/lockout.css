@@ -1,0 +1,35 @@
+.wall {
+    background-color: white;
+    position: absolute;
+
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+
+    height:calc(100vh - 270px);
+    
+    z-index: 100;
+}
+.wall * {
+    text-align: center;
+}
+.all{
+    flex-flow:column;
+    gap:5px;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.prompt{
+    font-size: 25px;
+}
+.answer input {
+    font-size:25px;
+}

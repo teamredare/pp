@@ -6,6 +6,7 @@ defineProps<{
   datetime: number;
   addy: string;
   poster: string;
+  posterUserImgUrl: string;
   posterImgUrl: string;
   likes: number;
   dislikes: number;
@@ -19,7 +20,7 @@ const days = 'sunday,monday,tuesday,wednesday,thurs,friday,saturday'.split(',')
 
 <template>
   <!-- make background be image -->
-  <div class="entry">
+  <div :class="`entry ` + (posterImgUrl ? 'withimg' : '')" :style="{backgroundImage:posterImgUrl ? `url(${posterImgUrl})` : null}">
     <div class="top">
       <!-- name date time poster etc -->
       <div class="info">

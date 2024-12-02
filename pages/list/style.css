@@ -46,6 +46,18 @@
     justify-content: center;
 
 }
+.posterandcheckbox{
+    display: flex;
+    flex-flow: row wrap;
+    gap:6px;
+    max-width: 260px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: fit-content;
+}
+.bofafungus {
+    display: flex;
+}
 
 .modal {
     display: flex;

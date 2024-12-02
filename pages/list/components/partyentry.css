@@ -2,6 +2,11 @@
     position: relative;
     display:flex;
     flex-flow:column;
+    background-size:contain;
+    background-repeat: repeat;
+    background-position: center;
+    background-color: lightblue;
+    /* background-position: 0; */
 
     height:400px;
     width:300px;
@@ -23,13 +28,31 @@
     display:flex;
     font-family: Poppins, arial;
 }
+.entry.withimg {
+    align-items: center;
+}
+.entry:not(.withimg) {
+    justify-content: center;
+}
 
 .top{
     position:absolute;
+    display: flex;
     top:0;
     left:0;
     right:0;
     padding:5px;
+
+}
+.withimg .top {
+    background: linear-gradient(black,rgba(0, 0, 0, 0));
+    color: white;
+    height:50%;
+}
+:not(.withimg)>.top {
+    justify-content: center;
+    align-items: center;
+    position: relative;
 }
 .info {
     flex-flow:column;
@@ -42,6 +65,13 @@
 }
 .info > * {
     margin-right:5px;
+}
+:not(.withimg)>*>.info {
+    align-items: center;
+}
+:not(.withimg)>*>.info * {
+    text-align: center;
+    justify-content: center;
 }
 .partyname {
     font-size:25px;
@@ -63,29 +93,37 @@
 .buttonbar{
     flex-flow:row;
     align-self: flex-end;
+    align-items: flex-end;
     gap:4px;
     padding:5px;
 }
 .button{
+    background-color: rgba(255, 255, 255, 0.5);
     padding:5px;
     border: solid rgba(0, 0, 0, 0.322) 2px;
     border-radius:35px;
-    width:35px;
-    height:35px;
+    --width:35px;
+    width:var(--width);
+    height:var(--width);
 
     align-items: center;
     justify-content: center;
-    transition:0.6s;
-    transition-property: filter, background;
-
+pe
     cursor:pointer;
 }
 .button:hover{
     background:rgb(255, 255, 255);
     filter:invert()
 }
+.button.attend {
+    --sizeIncrease:1.4;
+    width: calc(var(--width) * var(--sizeIncrease));
+    height: calc(var(--width) * var(--sizeIncrease));
+
+}
 .button img {
     /* width: */
+
 }
 .dislike img {
     rotate:180deg;

@@ -36,7 +36,8 @@ function toggleCreate() {
   <div class="pageroot">
 
 
-    <div class="title">parties</div>
+    <!-- <div class="title">parties</div> -->
+    <div></div>
     <div class="itembar">
       <div class="itemnest">
         <span class="agelabel">age range:</span>
@@ -58,9 +59,9 @@ function toggleCreate() {
     }"></Createpartyform>
 
     <div class="list">
-      <Lockout/>
+      <Lockout v-if="lockedout"/>
       <Entry v-for="post in posts" :title="post.title" :datetime="post.datetime" :addy="post.location"
-        :poster="james" />
+        :poster="james" :posterImgUrl="post.posterFilename ? `${apiurl}/posterimage/${post.posterFilename}` : null"/>
     </div>
   </div>
 </template>

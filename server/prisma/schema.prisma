@@ -22,6 +22,7 @@ model Post {
   location  String?
   text   String?
   contact   String?
+  posterFilename String?
   dmForAddy Boolean @default(false)
   published Boolean  @default(true)
   // User      User     @relation(fields: [authorId], references: [id], onDelete: NoAction, onUpdate: NoAction)

@@ -1,8 +1,12 @@
 import { PrismaClient } from '@prisma/client';
 import express from 'express'
 import cors from 'cors'
+import { getSecretWord } from './secretword';
+import cookieParser from 'cookie-parser'
+import { posterSaveDir, upload } from './upload';
 let app = express();
 app.use(express.json())
+app.use(cookieParser())
 app.use(cors({
     origin: '*',
     // origin:'http://localhost:3000',
@@ -14,17 +18,41 @@ const prisma = new PrismaClient();
 app.get('/parties', async (req, res) => {
     let parties = await prisma.post.findMany();
     // parties.lockedout = true;
-    res.status(403).send(parties);
+    res.status(200).send(parties);
+    // res.status(403).send({message:'you must enter the secret word'});
 })
 
+// app.get('/secretword',(req,res)=>{
+//     res.send(getSecretWord())
+// })
+app.get('/accesstoken',(req,res)=>{
+    let attemptedWord = req.query.word as string;
+    let realSecretWord = getSecretWord();
+    if(attemptedWord.toLowerCase().trim() == realSecretWord) {
+        res.status(200).send({token:'yes'})
+        // todo maybe return some encryption of their login deets that works with that
+    } else {
+        res.status(400).send({message:'wrong code'})
+        // todo enable ip attempt rate limitting
+    }
+})
+app.post('/posterimage',upload.single('file'), async (req,res)=>{
+    console.log('image uploaded, name',req.file.filename)
+    res.send({filename:req.file.filename})
+})
+import fs from 'fs'
+import path from 'path'
+app.get('/posterimage/:filename',(req,res)=>{
+    res.send(fs.readFileSync(posterSaveDir + path.sep + req.params.filename))
+})
 app.post('/parties', async (req, res) => {
     let body = req.body;
     let session = req.cookies['session'];
     let authorId;
-    if (session.startsWith('guest.')) {
+    if (session?.startsWith('guest.')) {
         authorId = session
     } else {
-        authorId = '... auth here'
+        authorId = 23432 //'... auth here'
     }
     body.authorId = authorId;
     console.log(req.body)
@@ -35,6 +63,7 @@ app.post('/parties', async (req, res) => {
         return;
     }
 
+    body.datetime = new Date(body.datetime).toISOString()
     await prisma.post.create({
         data: body
     })

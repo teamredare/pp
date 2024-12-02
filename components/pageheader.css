@@ -1,0 +1,33 @@
+.bar {
+    display: flex;
+    flex-flow: row;
+    gap:5px;
+    align-items: center;
+    justify-content: center;
+}
+.bargroup {
+    display: flex;
+    flex-flow: row;
+    gap:5px;
+    align-items: center;
+}
+.tblogo{
+    color:green;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bolder;
+    filter:drop-shadow(4px 4px 3px rgba(0, 73, 0, 0.781));
+    margin-right: 7px;
+}
+.tbitem {
+    transition: 0.2s;
+    transition-property: border;
+    border-bottom: solid 1px rgba(0, 0, 0, 0);
+    cursor:pointer;
+}
+.tbitem:hover{
+    /* text-decoration: underline; */
+    border-bottom: solid 1px black;
+}
+.currentpage {
+    font-size: 30px;
+}
